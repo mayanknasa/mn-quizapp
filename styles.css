@@ -1,0 +1,28 @@
+#question_box{
+    display: flex;
+    padding: 10px;
+    border: 1px solid;
+}
+#option_box{
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+.btn-group-vertical>.btn:not(:first-child){
+    margin-top: 0px;
+}
+.btn_section{
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+}
+#answer_teller_right{
+    color:rgb(44, 170, 44);
+}
+#answer_teller_wrong{
+    color:red;
+}
+#question_number_box{
+
+}
