@@ -3,9 +3,7 @@ axios
   .then((res) => {
     function displayQuestion(object) {
       const optionArray = [object.correct_answer, ...object.incorrect_answers];
-      console.log(optionArray);
       document.querySelector("#question_box").innerHTML = object.question;
-
       const chooseRandom = (arr) => {
         const res2 = [];
         for (let i = 0; i < arr.length; ) {
@@ -18,17 +16,13 @@ axios
         }
         return res2;
       };
-
       const randomOptionArray = chooseRandom(optionArray);
-      console.log(randomOptionArray);
       for (let i = 0; i < optionArray.length; ) {
         document.querySelector(`#btn${i + 1}label`).innerText =
           randomOptionArray[i];
         document
           .querySelector(`#btnradio${i + 1}`)
           .setAttribute("value", randomOptionArray[i]);
-        // console.log(randomOptionArray[i]);
-        // console.log("option changed");
         i++;
       }
       // FUNCTIONALITY ADDING
@@ -40,9 +34,6 @@ axios
           const userOutput = document.querySelector(
             "input[type=radio][name=btnradio]:checked"
           ).value;
-          console.log(userOutput);
-          console.log(correctAnswerValue);
-
           if (userOutput === correctAnswerValue) {
             right_answer_array.push(userOutput);
             document.querySelector("#check_answer").disabled = true;
@@ -74,7 +65,6 @@ axios
         },
         { once: true }
       );
-      console.log("yeahh");
     }
     let right_answer_array = [];
     let wrong_answer_array = [];
@@ -87,11 +77,9 @@ axios
     for (a = 0; a < 4; a++) {
       allRadioButtonArray.push(document.querySelector(`#btnradio${a + 1}`));
     }
-    console.log(allRadioButtonArray);
     let m = 0;
     next_question.addEventListener("click", () => {
       m++;
-      console.log(m);
       if (m <= 14) {
         displayQuestion(allQuestionArray[m]);
         document.querySelector("#question_number").innerText = m + 1;
