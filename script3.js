@@ -8,7 +8,7 @@ axios
 
       const chooseRandom = (arr) => {
         const res2 = [];
-        for (let i = 0; i < arr.length;) {
+        for (let i = 0; i < arr.length; ) {
           const random = Math.floor(Math.random() * arr.length);
           if (res2.indexOf(arr[random]) !== -1) {
             continue;
@@ -21,7 +21,7 @@ axios
 
       const randomOptionArray = chooseRandom(optionArray);
       console.log(randomOptionArray);
-      for (let i = 0; i < optionArray.length;) {
+      for (let i = 0; i < optionArray.length; ) {
         document.querySelector(`#btn${i + 1}label`).innerText =
           randomOptionArray[i];
         document
@@ -33,58 +33,82 @@ axios
       }
       // FUNCTIONALITY ADDING
       let check_answer = document.querySelector("#check_answer");
-      const correctAnswerValue=object.correct_answer;
-      check_answer.addEventListener("click", () => {
-        const userOutput = document.querySelector(
-          "input[type=radio][name=btnradio]:checked"
-        ).value;
-        console.log(userOutput);
-        console.log(correctAnswerValue);        
-        if (userOutput === correctAnswerValue) {  
-          let right_scoreText=0;  
-          right_scoreText++    
-          document.querySelector("#check_answer").disabled = true;
-          document.querySelector("#clear_response").disabled = true;
-          document.querySelector('#right_score').textContent=right_scoreText;
-          document.querySelectorAll(".btn-check").forEach(function (userItem) {
-            userItem.disabled = true;
-          });
-          document.querySelector("#answer_teller_right").innerText =
-            "CORRECT ANSWER!";
-        } else { 
-          let wrong_scoreText=0;        
-          wrong_scoreText++
-          document.querySelector("#check_answer").disabled = true;
-          document.querySelector("#clear_response").disabled = true;
-          document.querySelector('#wrong_score').innerText=wrong_scoreText;
-          document.querySelectorAll(".btn-check").forEach(function (userItem) {
-            userItem.disabled = true;
-          });
-          document.querySelector(
-            "#answer_teller_wrong"
-          ).innerHTML = `INCORRECT ANSWER!<br> <p style="font-size:20px; color:blue;">Correct Answer is : <span style="color:rgb(44, 170, 44);">${object.correct_answer}</span></p>`;
-        }
-        return [userOutput,correctAnswerValue];
-      },{once:true});
+      const correctAnswerValue = object.correct_answer;
+      check_answer.addEventListener(
+        "click",
+        () => {
+          const userOutput = document.querySelector(
+            "input[type=radio][name=btnradio]:checked"
+          ).value;
+          console.log(userOutput);
+          console.log(correctAnswerValue);
+
+          if (userOutput === correctAnswerValue) {
+            right_answer_array.push(userOutput);
+            document.querySelector("#check_answer").disabled = true;
+            document.querySelector("#clear_response").disabled = true;
+            document.querySelector("#right_score").textContent =
+              right_answer_array.length;
+            document
+              .querySelectorAll(".btn-check")
+              .forEach(function (userItem) {
+                userItem.disabled = true;
+              });
+            document.querySelector("#answer_teller_right").innerText =
+              "CORRECT ANSWER!";
+          } else {
+            wrong_answer_array.push(userOutput);
+            document.querySelector("#check_answer").disabled = true;
+            document.querySelector("#clear_response").disabled = true;
+            document.querySelector("#wrong_score").innerText =
+              wrong_answer_array.length;
+            document
+              .querySelectorAll(".btn-check")
+              .forEach(function (userItem) {
+                userItem.disabled = true;
+              });
+            document.querySelector(
+              "#answer_teller_wrong"
+            ).innerHTML = `INCORRECT ANSWER!<br> <p style="font-size:20px; color:blue;">Correct Answer is : <span style="color:rgb(44, 170, 44);">${object.correct_answer}</span></p>`;
+          }
+        },
+        { once: true }
+      );
       console.log("yeahh");
     }
+    let right_answer_array = [];
+    let wrong_answer_array = [];
     const allQuestionArray = res.data.results;
     const next_question = document.querySelector("#next_question");
     const clear_response = document.querySelector("#clear_response");
-    const question_number=document.querySelector("#question_number")
-    displayQuestion(allQuestionArray[0])
-    allRadioButtonArray=[]
-    for(a=0;a<4;a++){
-      allRadioButtonArray.push( document
-        .querySelector(`#btnradio${a + 1}`))
+    const question_number = document.querySelector("#question_number");
+    displayQuestion(allQuestionArray[0]);
+    allRadioButtonArray = [];
+    for (a = 0; a < 4; a++) {
+      allRadioButtonArray.push(document.querySelector(`#btnradio${a + 1}`));
     }
-    console.log(allRadioButtonArray)
-    let m = 1;
+    console.log(allRadioButtonArray);
+    let m = 0;
     next_question.addEventListener("click", () => {
-      if (m <= 15) {
+      m++;
+      console.log(m);
+      if (m <= 14) {
         displayQuestion(allQuestionArray[m]);
-        document.querySelector("#question_number").innerText=m+1;
-        m++;
+        document.querySelector("#question_number").innerText = m + 1;
+      }
+      if (m === 15) {
+        const percentage = (
+          right_answer_array.length / allQuestionArray.length
+        ).toFixed(2);
+        document.querySelector("#percentage_score").innerText = `${
+          percentage * 100
+        }%`;
+        document.querySelectorAll(".btn-check").forEach(function (userItem) {
+          userItem.checked = true;
+        });
+        document.querySelector("#next_question").disabled = true;
+        document.querySelector("#check_answer").disabled = true;
+        document.querySelector("#clear_response").disabled = true;
       }
       document.querySelector("#check_answer").disabled = false;
       document.querySelector("#clear_response").disabled = false;
@@ -95,19 +119,18 @@ axios
         userItem.disabled = false;
       });
     });
-    clear_response
-      .addEventListener("click", () => {
-        document.querySelectorAll(".btn-check").forEach(function (userItem) {
-          userItem.checked = false;
-        });
-      })
+    clear_response.addEventListener("click", () => {
+      document.querySelectorAll(".btn-check").forEach(function (userItem) {
+        userItem.checked = false;
+      });
+    });
   })
   .catch((e) => {
-  console.log("Opps error occured:", e);
-  document.querySelector("#question_box").innerText =
-    "Opps! Please Refresh the Page";
-  for (let t = 0; t < 5;t++) {
-    document.querySelector(`#btn${t + 1}label`).innerText =
-      "Please Refresh the Page";
-  }
-});
+    console.log("Opps error occured:", e);
+    document.querySelector("#question_box").innerText =
+      "Opps! Please Refresh the Page";
+    for (let t = 0; t < 5; t++) {
+      document.querySelector(`#btn${t + 1}label`).innerText =
+        "Please Refresh the Page";
+    }
+  });
