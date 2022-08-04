@@ -60,7 +60,7 @@ axios
               });
             document.querySelector(
               "#answer_teller_wrong"
-            ).innerHTML = `INCORRECT ANSWER!<br> <p style="font-size:20px; color:blue;">Correct Answer is : <span style="color:rgb(44, 170, 44);">${object.correct_answer}</span></p>`;
+            ).innerHTML = `INCORRECT ANSWER!<br> <p style="font-size:1.1rem; color:blue;">Correct Answer is : <span style="color:rgb(44, 170, 44); font-size:1.1rem;">${object.correct_answer}</span></p>`;
           }
         },
         { once: true }
