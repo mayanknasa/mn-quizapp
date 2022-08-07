@@ -38,9 +38,6 @@ axios
           const userOutput = document.querySelector(
             "input[type=radio][name=btnradio]:checked"
           ).value;
-          console.log(userOutput);
-          console.log(correctAnswerValue);
-
           if (userOutput === correctAnswerValue) {
             right_answer_array.push(userOutput);
             document.querySelector("#check_answer").disabled = true;
@@ -85,7 +82,6 @@ axios
     for (a = 0; a < 4; a++) {
       allRadioButtonArray.push(document.querySelector(`#btnradio${a + 1}`));
     }
-    console.log(allRadioButtonArray);
     let m = 0;
     next_question.addEventListener("click", () => {
       m++;

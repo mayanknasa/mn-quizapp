@@ -1,76 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QUIZ</title>
-    <link rel="icon" type="image/x-icon" href="quizicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="mx-auto" style="width: 400px;">
-        <div id="title">
-    <h1>QUIZ</h1>
-    <p id="copyright">2022 &#169; Mayank Nasa</p>
-</div>
-<div>
-    <div id="question_number_box">
-    Q<span id="question_number">1</span>/15</div>
-    <div id="question_box">
-        <h3>LOADING QUESTION...</h3>
-    </div>
-    <form id="main_form">
-    <div id="option_box">
-        <div class="btn-group-vertical">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
-            <label class="btn btn-outline-primary option-class" for="btnradio1" id="btn1label">Loading Options...</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary option-class" for="btnradio2" id="btn2label">Loading Options...</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary option-class" for="btnradio3" id="btn3label">Loading Options...</label>
-          
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-            <label class="btn btn-outline-primary option-class" for="btnradio4" id="btn4label">Loading Options...</label>
+    <link rel="icon" type="image/x-icon" href="quizicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .fly-in-left {
+        -webkit-animation: flyinleftanim 1s ease;
+      }
+      @-webkit-keyframes flyinleftanim {
+        0% {
+          -webkit-transform: translateX(-1000px);
+        }
+        100% {
+          -webkit-transform: translateX(0px);
+        }
+      }
+    </style>
+  </head>
+  <body class="fly-in-left">
+    <div class="mx-auto" style="width: 400px">
+      <div id="title">
+        <h1>Quiz App</h1>
+        <p id="copyright">Created by Mayank Nasa</p>
+      </div>
+      <div>
+        <div id="question_number_box">
+          Q<span id="question_number">1</span>/15
         </div>
-    </div>
-    <div class="btn_section">
-        <button type="button" class="btn btn-secondary" id="check_answer">Check Answer</button>
-        <button type="button" class="btn btn-info" id="clear_response">Clear Response</button>
-        <button type="button" class="btn btn-light" id="next_question">Next</button>
-    </div>
-    </form>
-    <div>
-        <h3 id="answer_teller_right"></h3>
-        <h3 id="answer_teller_wrong"></h3>
-    </div>
-    </div>
-    <div id="score_board">
-        <table class="table table-bordered my-table">
-            <tr>
-                <td class="table-success text-center text-success">CORRECT ANSWERS</td>
-                <td class="table-danger text-center text-danger">WRONG ANSWERS</td>
-            </tr>
-            <tr>
-                <td class="table-success text-center text-success fs-1" id="right_score">0</td>
-                <td class="table-danger text-center text-danger fs-1" id="wrong_score">0</td>
-            </tr>
-            <tr>
-                <td class="table-primary text-center text-primary" id="">Complete Quiz <br> to know your <br>Percentage!</td>
-                <td class="table-primary text-center text-primary fs-1" id="percentage_score">%</td>
-        </table>
-    </div>
-    </div>
-</div>
+        <div id="question_box">
+          <h3>LOADING QUESTION...</h3>
+        </div>
+        <form id="main_form">
+          <div id="option_box">
+            <div class="btn-group-vertical">
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary option-class"
+                for="btnradio1"
+                id="btn1label"
+                >Loading Options...</label
+              >
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="script3.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-</body>
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary option-class"
+                for="btnradio2"
+                id="btn2label"
+                >Loading Options...</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio3"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary option-class"
+                for="btnradio3"
+                id="btn3label"
+                >Loading Options...</label
+              >
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio4"
+                autocomplete="off"
+              />
+              <label
+                class="btn btn-outline-primary option-class"
+                for="btnradio4"
+                id="btn4label"
+                >Loading Options...</label
+              >
+            </div>
+          </div>
+          <div class="alert alert-primary note">
+            Please <b>Check Answer</b> before clicking <b>Next</b>.
+          </div>
+          <div class="btn_section">
+            <button type="button" class="btn btn-secondary" id="check_answer">
+              Check Answer
+            </button>
+            <button type="button" class="btn btn-info" id="clear_response">
+              Clear Response
+            </button>
+            <button type="button" class="btn btn-light" id="next_question">
+              Next
+            </button>
+          </div>
+        </form>
+        <div>
+          <h3 id="answer_teller_right"></h3>
+          <h3 id="answer_teller_wrong"></h3>
+        </div>
+      </div>
+      <div id="score_board">
+        <table class="table table-bordered my-table">
+          <tr>
+            <td class="table-success text-center text-success">
+              CORRECT ANSWERS
+            </td>
+            <td class="table-danger text-center text-danger">WRONG ANSWERS</td>
+          </tr>
+          <tr>
+            <td
+              class="table-success text-center text-success fs-1 score"
+              id="right_score"
+            >
+              0
+            </td>
+            <td
+              class="table-danger text-center text-danger fs-1 score"
+              id="wrong_score"
+            >
+              0
+            </td>
+          </tr>
+          <tr>
+            <td class="table-primary text-center text-primary percentage" id="">
+              Complete Quiz <br />
+              to know your <br />Percentage!
+            </td>
+            <td
+              class="table-primary text-center text-primary fs-1"
+              id="percentage_score"
+            >
+              %
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="github-section">
+        <a href="https://github.com/mayanknasa/quizApp">
+          <section><img src="git-logo.png" /> Go to GitHub Code</section></a
+        >
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script3.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
