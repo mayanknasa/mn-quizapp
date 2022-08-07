@@ -41,6 +41,7 @@ body {
   color: #370617;
   text-align: center;
   font-weight: 500;
+  justify-content: center;
 }
 
 #option_box {
