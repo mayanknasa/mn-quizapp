@@ -1,3 +1,21 @@
+const QuotesArray = [
+  "Real knowledge is to know the extent of one’s ignorance.",
+  "Knowledge has a beginning but no end.",
+  "The good life is one inspired by love and guided by knowledge.",
+  "A people without the knowledge of their past history, origin and culture is like a tree without roots.” Marcus Garvey",
+  "Be a lifelong student. The more you learn, the more you earn and more self-confidence you will have.",
+  "Human behavior flows from three main sources: desire, emotion, and knowledge.",
+  "Knowledge is the treasure of a wise man.",
+  "Knowledge is power. And you need power in this world. You need as many advantages as you can get.",
+  "Any fool can know. The point is to understand.",
+  "An investment in knowledge pays the best interest.",
+];
+const randomIndexFromQuotesArray = Math.floor(
+  Math.random() * QuotesArray.length
+);
+document.querySelector(
+  ".quote"
+).innerHTML = `<b>Quote of the Day</b><br><i>"${QuotesArray[randomIndexFromQuotesArray]}"</i>`;
 axios
   .get("https://opentdb.com/api.php?amount=15&category=18&type=multiple")
   .then((res) => {
@@ -60,7 +78,7 @@ axios
               });
             document.querySelector(
               "#answer_teller_wrong"
-            ).innerHTML = `INCORRECT ANSWER!<br> <p style="font-size:1.1rem; color:blue;">Correct Answer is : <span style="color:rgb(44, 170, 44); font-size:1.1rem;">${object.correct_answer}</span></p>`;
+            ).innerHTML = `INCORRECT ANSWER!<br> <p style="font-size:1.1rem; color:#82c5f5;">Correct Answer is : <span style="color:yellowgreen; font-size:1.1rem;">${object.correct_answer}</span></p>`;
           }
         },
         { once: true }
