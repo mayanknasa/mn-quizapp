@@ -25,18 +25,20 @@
       }
     </style>
   </head>
-  <body class="fly-in-left">
+  <body class="fly-in-left container">
     <div class="mx-auto" style="width: 400px">
-      <div id="title">
+      <div class="title">
         <h1>Quiz App</h1>
         <p id="copyright">Created by Mayank Nasa</p>
       </div>
       <div>
-        <div id="question_number_box">
-          Q<span id="question_number">1</span>/15
-        </div>
-        <div id="question_box">
-          <h3>LOADING QUESTION...</h3>
+        <div class="question-area">
+          <div id="question_number_box">
+            Q<span id="question_number">1</span>/15
+          </div>
+          <div id="question_box">
+            <h3>LOADING QUESTION...</h3>
+          </div>
         </div>
         <form id="main_form">
           <div id="option_box">
@@ -102,63 +104,42 @@
             Please <b>Check Answer</b> before clicking <b>Next</b>.
           </div>
           <div class="btn_section">
-            <button type="button" class="btn btn-secondary" id="check_answer">
+            <button type="button" class="btn btn-primary" id="check_answer">
               Check Answer
             </button>
-            <button type="button" class="btn btn-info" id="clear_response">
+            <button type="button" class="btn" id="clear_response">
               Clear Response
             </button>
-            <button type="button" class="btn btn-light" id="next_question">
+            <button type="button" class="btn btn-secondary" id="next_question">
               Next
             </button>
           </div>
         </form>
-        <div>
+        <div id="answer-teller">
           <h3 id="answer_teller_right"></h3>
           <h3 id="answer_teller_wrong"></h3>
         </div>
       </div>
       <div id="score_board">
-        <table class="table table-bordered my-table">
+        <table class="score-table">
           <tr>
-            <td class="table-success text-center text-success">
-              CORRECT ANSWERS
-            </td>
-            <td class="table-danger text-center text-danger">WRONG ANSWERS</td>
+            <td class="c-a">CORRECT ANSWERS</td>
+            <td class="w-a">WRONG ANSWERS</td>
           </tr>
           <tr>
-            <td
-              class="table-success text-center text-success fs-1 score"
-              id="right_score"
-            >
-              0
-            </td>
-            <td
-              class="table-danger text-center text-danger fs-1 score"
-              id="wrong_score"
-            >
-              0
-            </td>
+            <td class="" id="right_score">0</td>
+            <td class="" id="wrong_score">0</td>
           </tr>
-          <tr>
-            <td class="table-primary text-center text-primary percentage" id="">
+          <tr class="percentage-area">
+            <td style="color: #82c5f5">
               Complete Quiz <br />
               to know your <br />Percentage!
             </td>
-            <td
-              class="table-primary text-center text-primary fs-1"
-              id="percentage_score"
-            >
-              %
-            </td>
+            <td class="" id="percentage_score">%</td>
           </tr>
         </table>
       </div>
-      <div class="github-section">
-        <a href="https://github.com/mayanknasa/quizApp">
-          <section><img src="git-logo.png" /> Go to GitHub Code</section></a
-        >
-      </div>
+      <div class="quote"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>

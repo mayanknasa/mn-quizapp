@@ -1,163 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
-  font-size: 13.5px;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* CSS VARIABLES DECLARARTIONS */
+:root {
+  --color-bg: #58589b;
+  --color-bg-variant: #2c2c6c;
+  --color-primary: #4db5ff;
+  --color-primary-variant: rgba(77, 181, 255, 0.4);
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 85%;
+  --container-widtSh-sm: 90%;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+/* DISABLING SCROLL BAR */
+::-webkit::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-  background-image: linear-gradient(#a498e0, #ffffff, #a498e0);
-  background-size: contain;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Poppins", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-white);
+  line-height: 1.7;
+  height: 100vh;
 }
 
-#title {
-  color: rgb(44, 44, 44);
-  font-size: 62px;
-  font-weight: 800;
-  margin: 0 0 5px;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 0;
-  margin: 0;
-}
-
-#question_number_box {
-  background-color: #8ae2f3;
-  text-align: center;
-  border: 1px dashed #000;
-  border-radius: 50% / 100% 100% 0 0;
-  border-bottom: 0;
-  padding-top: 5px;
-}
-
-#question_box {
+/* GENERAL DECLARATIONS */
+.container {
   display: flex;
-  padding: 10px;
-  padding-top: 0px;
-  border-top: 0 !important;
-  border: 1px dashed #14213d;
-  background-color: #8ae2f3;
-  color: #370617;
-  text-align: center;
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 500;
 }
 
-#option_box {
-  padding: 10px 0px;
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.title {
+  text-align: center;
+}
+
+.question-area {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  cursor: pointer;
+  background-color: #4db5ff;
+  padding: 0.1rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
 }
 
-.option-class {
-  margin-top: -1px;
-  margin-bottom: -1px;
-  background-color: #e5e5e5;
-  color: #000;
-  border: 1.5px solid #73a9fc;
-  border-radius: 0;
-  box-sizing: border-box;
-  background-color: #fff;
-  font-weight: bolder;
-}
-
-.option-class:hover {
-  background-color: #73a9fc;
+.question-area #question_number_box {
+  color: var(--color-bg-variant);
 }
 
 .note {
+  width: 100%;
   text-align: center;
-  padding: 4px;
+  margin-bottom: 0.4rem;
+}
+
+#option_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+#option_box label {
+  margin: 0 !important;
+}
+
+.option-class {
+  color: #000 !important;
+  border: 1.5px solid #73a9fc;
+  border-radius: 0;
+  box-sizing: border-box;
+  margin: 5px;
+  background-color: var(--color-light);
 }
 
 .btn_section {
   display: flex;
   flex-wrap: wrap;
-  box-sizing: border-box;
+  width: 100%;
+  justify-content: space-between;
 }
 
-.btn_section button {
-  width: 50%;
-  box-sizing: border-box;
+.btn_section #check_answer {
+  width: 49.5%;
+  margin-right: 0.25%;
 }
 
-#answer_teller_right {
-  color: rgb(44, 170, 44);
+.btn_section #clear_response {
+  width: 49.5%;
+  margin-left: 0.25%;
 }
 
-#check_answer {
-  background-color: #0077b6;
-  color: #fff;
-  border-radius: 0;
-  border: 0;
+.btn_section #next_question {
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
-#check_answer:hover {
-  background-color: #0096c7;
-  border-radius: 0;
+a {
+  color: var(--color-primary);
+  transition: var(--transition);
 }
 
-#clear_response {
-  background-color: #5dc9dc;
-  border-radius: 0;
-  border: 0;
+a:hover {
+  color: var(--color-white);
 }
 
-#clear_response:hover {
-  background-color: #8ae0f1;
+.btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--color-primary);
+  transition: var(--transition);
 }
 
-#next_question {
-  background-color: #03045e;
-  color: #ffffff;
-  border-radius: 0;
-  border: 0;
+.btn:hover {
+  background: var(--color-white);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btn-secondary {
+  background-color: #5393f4;
+  color: var(--color-white);
+}
+
+#score_board {
+  border-radius: 1rem;
+  border: 1px solid #fff;
   width: 100%;
 }
 
-#next_question:hover {
-  background-color: #023e8a;
-}
-
-#answer_teller_right {
-  text-align: center;
-  padding-top: 5px;
-}
-
-#answer_teller_wrong {
-  color: red;
-  text-align: center;
-}
-
 td {
-  padding: 0 !important;
-}
-
-.percentage {
-  padding: 5px 0;
-}
-
-.github-section {
   text-align: center;
-  background-color: #fff;
-  cursor: pointer;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding: 0.5rem 2rem;
 }
 
-.github-section a {
-  text-decoration: none;
+.c-a {
+  color: yellowgreen;
+}
+
+.w-a {
+  color: rgb(255, 90, 123);
+}
+
+#right_score {
+  background-color: yellowgreen;
+  font-size: 1.5rem;
   color: #000;
 }
-
-.github-section:hover {
-  -webkit-filter: invert(1);
-  filter: invert(1);
+#wrong_score {
+  background-color: rgb(255, 90, 123);
+  font-size: 1.5rem;
+  color: #000;
+}
+#answer_teller_right {
+  text-align: center;
+  color: yellowgreen;
+  margin: 1rem;
+}
+#answer_teller_wrong {
+  color: rgb(255, 90, 123);
+  text-align: center;
+}
+#percentage_score {
+  font-size: 2rem;
+  color: #82c5f5;
 }
 
-.github-section img {
-  width: 35px;
-  height: 30px;
+.quote {
+  padding: 1.5rem;
+  text-align: center;
+}
+/* MEDIA QUERIES FOR MEDIUM DEVICES(LIKE TABLETS) */
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+  }
+}
+
+/* MEDIA QUERIES FOR SMALLER DEVICES */
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: var(--container-width-sm);
+  }
 }
