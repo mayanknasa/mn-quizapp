@@ -7,7 +7,17 @@ body {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
+a:link ,a:visited ,a:hover, a:active {
+  text-decoration: none;
+  color: #000;
+}
+
 /* BACKGROUND ANIMATION STYLES STARTS */
 .bg {
   animation: slide 3s ease-in-out infinite alternate;
@@ -19,6 +29,7 @@ body {
   right: -50%;
   top: 0;
   z-index: -1;
+  overflow: hidden;
 }
 
 .bg2 {
@@ -44,9 +55,8 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: 2em;
+  padding: 1em;
   text-align: center;
-  top: 50%;
   zoom: 0.9;
 }
 
@@ -76,11 +86,11 @@ h1 {
   align-items: center;
   border: 1px solid #03071e;
   border-radius: 1em;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 #main_form #option_box {
-  padding: 1em 0;
+  padding: 0.8em 0;
 }
 
 #main_form #option_box label {
@@ -163,7 +173,7 @@ h1 {
 }
 
 .quote {
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: center;
 }
 
